@@ -14,7 +14,7 @@ namespace Shotgun
         public Player(int ammo)
         {
             Ammo = ammo;
-
+           
         }
     }
 }

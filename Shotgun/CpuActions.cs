@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace Shotgun
 {
+
+
     public class CpuActions
     {
+       
+
         public Cpu CpuRandom(Cpu cpu)
         {
 
@@ -22,7 +26,7 @@ namespace Shotgun
                     if (cpu.Ammo < 3)
                     {
                         cpu.Ammo++;
-                        
+                    
                     }
                     break;
 
@@ -45,11 +49,11 @@ namespace Shotgun
                     break;
 
                 case 4: // Shotgun
-                    if (cpu.Ammo != 0 )
+                    if (cpu.Ammo == 3 )      // nytt !!!!!!!!!!!!!!!!
                     {
 
                     }
-                    else goto case 1;
+                   
                     break;
             }
 

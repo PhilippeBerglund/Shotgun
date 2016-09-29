@@ -23,37 +23,86 @@ namespace Shotgun
         Cpu NewCpu = new Cpu(0);
 
 
-     public void btnLoad_Click(object sender, EventArgs e)
+
+        public void btnLoad_Click(object sender, EventArgs e)
         {
-            if (NewPlayer.Ammo < 3 ) 
+            if (NewPlayer.Ammo < 3)
             {
                 int shots = int.Parse(lblPlayShots.Text);
                 shots++;
                 lblPlayShots.Text = shots.ToString();
 
+                lblPlAction.Text = "Shotgun Loaded"; //nytt
+
                 NewPlayer.Ammo++;
+
+                btnShoot.Visible = true;  // nytt!!!!!!!!!!!!!!!!!!!!
             }
 
             if (NewPlayer.Ammo == 3)
             {
                 btnShotgun.Visible = true;
                 btnLoad.Visible = false;
-            } 
+            }
 
-            CpuActions cpuActions = new CpuActions();
+            if (NewCpu.Ammo < 3)               //nytt!!!!!!!!!!!!!!!! add label text
+            {
 
-            var cpu =  cpuActions.CpuRandom(NewCpu);
+                CpuActions cpuActions = new CpuActions();
 
-            lblCpuShots.Text = cpu.Ammo.ToString();
+                var cpu = cpuActions.CpuRandom(NewCpu);
 
-        }
+                lblCpuShots.Text = cpu.Ammo.ToString();
 
-        private void FormShotgun_Load(object sender, EventArgs e)
+
+                  }
+
+            }
+
+
+        private void btnShoot_Click(object sender, EventArgs e) // nytt!!!!!!!!!!!!!
         {
-          
-          
+            if (NewPlayer.Ammo < 3)
+            {
+                int shots = int.Parse(lblPlayShots.Text);
+                shots--;
+                lblPlayShots.Text = shots.ToString();
+
+                lblPlAction.Text = "Shot Fired"; //nytt
+
+                NewPlayer.Ammo--;
+            }
+
+            if (NewPlayer.Ammo >= 1)
+            {
+                // btnShotgun.Visible = true;
+                //btnLoad.Visible = false;
+                btnShoot.Visible = true;
+            }
+            else btnShoot.Visible = false;
+
+
+
+            //if (NewPlayer.Ammo <= 1)
+            //{
+
+            //    btnShoot.Visible = true;
+            //}
+
         }
 
-       
+        private
+            void FormShotgun_Load 
+            (object sender, EventArgs e) // Laddar Forms Bakgrund
+            {
+
+
+            }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
-}
+    }
+
