@@ -77,6 +77,7 @@
             this.btnBlock.TabIndex = 2;
             this.btnBlock.Text = "Block";
             this.btnBlock.UseVisualStyleBackColor = true;
+            this.btnBlock.Click += new System.EventHandler(this.btnBlock_Click);
             // 
             // btnNewGame
             // 
@@ -214,7 +215,6 @@
             this.groupBox2.Size = new System.Drawing.Size(648, 209);
             this.groupBox2.TabIndex = 17;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // FormShotgun
             // 

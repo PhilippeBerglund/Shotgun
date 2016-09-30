@@ -36,7 +36,7 @@ namespace Shotgun
 
                 NewPlayer.Ammo++;
 
-                btnShoot.Visible = true;  // nytt!!!!!!!!!!!!!!!!!!!!
+                btnShoot.Visible = true; // nytt!!!!!!!!!!!!!!!!!!!!
             }
 
             if (NewPlayer.Ammo == 3)
@@ -45,7 +45,7 @@ namespace Shotgun
                 btnLoad.Visible = false;
             }
 
-            if (NewCpu.Ammo < 3)               //nytt!!!!!!!!!!!!!!!! add label text
+            if (NewCpu.Ammo < 3) //nytt!!!!!!!!!!!!!!!! add label text
             {
 
                 CpuActions cpuActions = new CpuActions();
@@ -55,9 +55,9 @@ namespace Shotgun
                 lblCpuShots.Text = cpu.Ammo.ToString();
 
 
-                  }
-
             }
+
+        }
 
 
         private void btnShoot_Click(object sender, EventArgs e) // nytt!!!!!!!!!!!!!
@@ -91,18 +91,22 @@ namespace Shotgun
 
         }
 
-        private
-            void FormShotgun_Load 
-            (object sender, EventArgs e) // Laddar Forms Bakgrund
-            {
+      
+        private void btnBlock_Click(object sender, EventArgs e)
+        {
+            lblPlAction.Text = "Blocked"; //nytt
+        }
 
 
-            }
-
-        private void groupBox2_Enter(object sender, EventArgs e)
+        private void FormShotgun_Load
+          (object sender, EventArgs e) // Laddar Forms Bakgrund
         {
 
+
         }
+
+
     }
-    }
+
+}
 
