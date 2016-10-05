@@ -92,7 +92,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Wingdings", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.label1.Location = new System.Drawing.Point(684, 416);
+            this.label1.Location = new System.Drawing.Point(602, 410);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(82, 79);
             this.label1.TabIndex = 4;
@@ -194,7 +194,7 @@
             this.label6.BackColor = System.Drawing.SystemColors.Control;
             this.label6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label6.Font = new System.Drawing.Font("Wingdings", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.label6.Location = new System.Drawing.Point(575, 447);
+            this.label6.Location = new System.Drawing.Point(554, 441);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(51, 36);
             this.label6.TabIndex = 14;
@@ -220,7 +220,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(768, 492);
+            this.ClientSize = new System.Drawing.Size(731, 492);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.lblCpuAction);

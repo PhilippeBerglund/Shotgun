@@ -18,23 +18,25 @@ namespace Shotgun
         }
 
 
-        Player NewPlayer = new Player(0);
+        public Player NewPlayer = new Player();
 
-        Cpu NewCpu = new Cpu(0);
+        public Cpu NewCpu = new Cpu();
 
-
-
+       
         public void btnLoad_Click(object sender, EventArgs e)
         {
-            if (NewPlayer.Ammo < 3)
+            NewPlayer.Ammo++;
+            lblPlAction.Text = "Loaded";
+
+            if (NewPlayer.Ammo <= 3)
             {
-                int shots = int.Parse(lblPlayShots.Text);
-                shots++;
-                lblPlayShots.Text = shots.ToString();
+               lblPlayShots.Text = Convert.ToString(NewPlayer.Ammo);
 
-                lblPlAction.Text = "Shotgun Loaded"; //nytt
+                //int shots = int.Parse(lblPlayShots.Text);  ---- bort??
+                //shots++;
+                //lblPlayShots.Text = shots.ToString();
 
-                NewPlayer.Ammo++;
+                //lblPlAction.Text = "Shotgun Loaded"; //nytt
 
                 btnShoot.Visible = true; // nytt!!!!!!!!!!!!!!!!!!!!
             }
@@ -45,33 +47,82 @@ namespace Shotgun
                 btnLoad.Visible = false;
             }
 
-            if (NewCpu.Ammo < 3) //nytt!!!!!!!!!!!!!!!! add label text
+            //-------------cpu------------------------------------------
+
+            var cpuActions = new CpuActions();
+            cpuActions.CpuRandom(NewCpu);
+
+            if (NewCpu.Load)
             {
+               // NewCpu.Load = true;
+               // NewCpu.Ammo++;
+                lblCpuAction.Text = "I load for Life";
+            }
 
-                CpuActions cpuActions = new CpuActions();
+            if (NewCpu.Shoot)
+            {
+               // NewCpu.Ammo--;
+                lblCpuAction.Text = "Shots Fired";
+                NewCpu.Win = true;
+            }
 
-                var cpu = cpuActions.CpuRandom(NewCpu);
+            if (NewCpu.Block)
+            {
+                lblCpuAction.Text = "I move too Fast";
+            }
 
-                lblCpuShots.Text = cpu.Ammo.ToString();
-
+            if (NewCpu.Shotgun)
+            {
+                NewCpu.Win = true;
+                lblCpuAction.Text = "Shotgun, Good Night";
 
             }
 
+            if (NewCpu.Win)
+            {
+                MessageBox.Show("You lost!");
+            }
+
+            if (NewCpu.Ammo < 3)
+            {
+                lblCpuShots.Text = Convert.ToString(NewCpu.Ammo);
+
+                //int cpuShots = int.Parse(lblCpuShots.Text);
+                //cpuShots++;
+                //lblCpuShots.Text = cpuShots.ToString();
+
+            }
         }
 
 
-        private void btnShoot_Click(object sender, EventArgs e) // nytt!!!!!!!!!!!!!
+        public void btnShoot_Click(object sender, EventArgs e)
         {
-            if (NewPlayer.Ammo < 3)
+            NewPlayer.Ammo--;
+            lblPlAction.Text = "Shots Fired";
+
+            if (NewPlayer.Ammo <= 3)
             {
-                int shots = int.Parse(lblPlayShots.Text);
-                shots--;
-                lblPlayShots.Text = shots.ToString();
+                lblPlayShots.Text = Convert.ToString(NewPlayer.Ammo);
 
-                lblPlAction.Text = "Shot Fired"; //nytt
+                //int shots = int.Parse(lblPlayShots.Text);  ---- bort??
+                //shots++;
+                //lblPlayShots.Text = shots.ToString();
 
-                NewPlayer.Ammo--;
+                //lblPlAction.Text = "Shotgun Loaded"; //nytt
+
+                btnShoot.Visible = true; // nytt!!!!!!!!!!!!!!!!!!!!
             }
+
+            //if (NewPlayer.Ammo < 3)
+            //{
+            //    int shots = int.Parse(lblPlayShots.Text);
+            //    shots--;
+            //    lblPlayShots.Text = shots.ToString();
+
+            //    lblPlAction.Text = "Shot Fired";
+
+            //    NewPlayer.Ammo--;
+            //}
 
             if (NewPlayer.Ammo >= 1)
             {
@@ -82,24 +133,90 @@ namespace Shotgun
             else btnShoot.Visible = false;
 
 
+            //--------------------cpu------------------------------
 
-            //if (NewPlayer.Ammo <= 1)
-            //{
+            var cpuActions = new CpuActions();
+            cpuActions.CpuRandom(NewCpu);
 
-            //    btnShoot.Visible = true;
-            //}
+            if (NewCpu.Ammo < 3)
+            {
+               // CpuActions cpuActions = new CpuActions();
 
+               // var cpu = cpuActions.CpuRandom(NewCpu);
+
+               // int cpuShots = int.Parse(lblCpuShots.Text);
+               //// cpuShots--;
+               // lblCpuShots.Text = cpuShots.ToString();
+
+                if (NewCpu.Shoot)
+                {
+                    //cpu.Ammo--;
+                    lblCpuAction.Text = "Shots Fired";
+                }
+
+
+                if (NewCpu.Load)
+                {
+                    lblCpuAction.Text = "I load for Life";
+                    NewPlayer.Win = true;
+                    MessageBox.Show("Player Win");
+                }
+
+          
+                
+            }
         }
 
-      
+
+
+        // todo gömma blocken när det inte finns skott 
         private void btnBlock_Click(object sender, EventArgs e)
         {
-            lblPlAction.Text = "Blocked"; //nytt
+            if (NewPlayer.Ammo < 3)
+            {
+                lblPlAction.Text = "Blocked"; //nytt
+            }
+
+            if (NewPlayer.Ammo < 0)
+            {
+                //   btnShotgun.Visible = true;
+                btnBlock.Visible = false;
+            }
+
+            else btnBlock.Visible = true;
+
+
+
+            if (NewCpu.Ammo < 3)
+            {
+                CpuActions cpuActions = new CpuActions();
+
+                var cpu = cpuActions.CpuRandom(NewCpu);
+
+                //int cpuShots = int.Parse(lblCpuShots.Text);
+                
+                //lblCpuShots.Text = cpuShots.ToString();
+
+                if (NewCpu.Block)
+                {
+                   
+                    lblCpuAction.Text = "I move too Fast";
+                }
+
+
+            }
         }
+
+
+
+
+
+
+
 
 
         private void FormShotgun_Load
-          (object sender, EventArgs e) // Laddar Forms Bakgrund
+            (object sender, EventArgs e) // Laddar Forms Bakgrund
         {
 
 
